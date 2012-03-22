@@ -4,6 +4,6 @@ template "/usr/local/graphite_dummy_data.rb" do
 end
 
 cron "graphite_dummy_data" do
-  minute "*/5"
+  minute "*"
   command "/usr/local/graphite_dummy_data.rb"
 end

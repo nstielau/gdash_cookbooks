@@ -1,0 +1,9 @@
+
+Launch a Fedora 16 box and run:
+
+    yum upgrade -y && yum install -y git ruby ruby-devel rubygems gcc git-core python python-pip
+    gem install chef bundler --no-rdoc --no-ri
+    echo '{"run_list": ["recipe[graphite]"]}' > ~/solo.json
+    mkdir -p /var/chef/cookbooks
+    git clone https://github.com/nstielau/gdash_cookbooks /var/chef/cookbooks
+    chef-solo -j ~/solo.json

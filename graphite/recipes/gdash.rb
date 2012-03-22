@@ -13,6 +13,13 @@ git "/opt/gdash" do
   notifies :run, "execute[bundle]", :immediately
 end
 
+git "/opt/gdash/demo_dashboards" do      
+  repository "https://github.com/nstielau/gdash_demo.git"
+  revision 'master'
+  action :sync
+  notifies :restart, "gdash.service", :delayed
+end
+
 execute "reload-systemd" do
   command "systemctl --system daemon-reload"
   action :nothing
