@@ -48,10 +48,3 @@ service "carbon-cache.service" do
   supports :status => true, :restart => true
   provider Chef::Provider::Service::Systemd
 end
-
-template "/etc/iptables.d/30_carbon" do
-  source "iptables.d/accept_inbound_port.erb"
-  cookbook "iptables"
-  variables({:ports => [2003]})
-  notifies :restart, "service[iptables.service]", :immediate
-end

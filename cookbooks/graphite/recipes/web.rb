@@ -56,10 +56,3 @@ cookbook_file "/opt/graphite/storage/graphite.db" do
   group "apache"
   action :create_if_missing
 end
-
-template "/etc/iptables.d/30_graphite_web" do
-  source "iptables.d/accept_inbound_port.erb"
-  cookbook "iptables"
-  variables({:ports => [8080]})
-  notifies :restart, "service[iptables.service]", :immediate
-end

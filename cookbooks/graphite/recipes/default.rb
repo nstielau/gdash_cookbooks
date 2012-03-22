@@ -17,8 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe "python"
-include_recipe "iptables"
+package "python"
 
 include_recipe "graphite::whisper"
 include_recipe "graphite::carbon"
