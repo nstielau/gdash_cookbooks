@@ -25,11 +25,6 @@ template "/opt/gdash/config/gdash.yaml" do
   notifies :restart, "service[gdash.service]", :delayed
 end
 
-template "/opt/gdash/demo_config.ru" do
-  source "config.ru.erb"
-  notifies :restart, "service[gdash.service]", :delayed
-end
-
 execute "reload-systemd" do
   command "systemctl --system daemon-reload"
   action :nothing
@@ -40,8 +35,9 @@ template "/etc/systemd/system/gdash.service" do
   source "gdash.service.erb"
   variables({:description => "HTTP for wallboard",
              :options => "--port 8080",
-             :config_file => "/opt/gdash/demo_config.ru"})
+             :config_file => "/opt/gdash/config.ru"})
   notifies :run, "execute[reload-systemd]", :immediately
+  notifies :restart, "service[gdash.service]", :delayed
 end
 
 service "gdash.service" do
