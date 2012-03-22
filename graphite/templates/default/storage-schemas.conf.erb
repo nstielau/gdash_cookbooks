@@ -1,0 +1,14 @@
+[stats]
+priority = 100
+pattern = ^stats\..*
+retentions = 10:2160,60:10080,600:262974
+
+[servers]
+priority = 90
+pattern = ^servers\..*
+retentions = 100:5040,900:8640,3600:17520
+
+[catchall]
+priority = 0
+pattern = ^.*
+retentions = 1m:30d

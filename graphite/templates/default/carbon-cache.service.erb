@@ -1,0 +1,10 @@
+[Unit]
+Description=Carbon Cache for Graphite
+
+[Service]
+ExecStart=/usr/bin/python /opt/graphite/bin/carbon-cache.py start
+Type=forking
+PIDFile=/opt/graphite/storage/carbon-cache-a.pid
+
+[Install]
+WantedBy=multi-user.target

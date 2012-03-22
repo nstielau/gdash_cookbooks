@@ -1,0 +1,10 @@
+[Unit]
+Description=GDash - Graphite Dashboard - <%= @description %>
+
+[Service]
+ExecStart=/usr/bin/rackup <%= @config_file %> <%= @options %>
+# Rack stops with SIGINT, not SIGTERM
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
