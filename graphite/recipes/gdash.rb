@@ -40,7 +40,7 @@ template "/etc/systemd/system/gdash.service" do
   source "gdash.service.erb"
   variables({:description => "HTTP for wallboard",
              :options => "--port 8080",
-             :config_file => "/opt/gdash/config/demo_config.ru"})
+             :config_file => "/opt/gdash/demo_config.ru"})
   notifies :run, "execute[reload-systemd]", :immediately
 end
 
