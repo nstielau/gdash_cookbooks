@@ -25,7 +25,7 @@ template "/opt/gdash/config/gdash.yaml" do
   notifies :restart, "service[gdash.service]", :delayed
 end
 
-template "/opt/gdash/config/demo_config.ru" do
+template "/opt/gdash/demo_config.ru" do
   source "config.ru.erb"
   notifies :restart, "service[gdash.service]", :delayed
 end
