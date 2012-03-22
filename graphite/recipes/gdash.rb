@@ -20,6 +20,11 @@ git "/opt/gdash/demo_dashboards" do
   notifies :restart, "service[gdash.service]", :delayed
 end
 
+template "/opt/gdash/config/gdash.yaml" do
+  source "gdash.yaml.erb"
+  notifies :restart, "service[gdash.service]", :delayed
+end
+
 execute "reload-systemd" do
   command "systemctl --system daemon-reload"
   action :nothing
