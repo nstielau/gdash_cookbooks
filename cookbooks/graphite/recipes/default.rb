@@ -17,8 +17,7 @@
 # limitations under the License.
 #
 
-package "python"
-
+include_recipe "graphite::dependencies"
 include_recipe "graphite::whisper"
 include_recipe "graphite::carbon"
 include_recipe "graphite::web"

@@ -56,3 +56,9 @@ cookbook_file "/opt/graphite/storage/graphite.db" do
   group "apache"
   action :create_if_missing
 end
+
+service "httpd.service" do
+  action [:start, :enable]
+  supports :status => true, :restart => true
+  provider Chef::Provider::Service::Systemd
+end
