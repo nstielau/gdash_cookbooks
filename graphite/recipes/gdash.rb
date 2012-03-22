@@ -1,7 +1,16 @@
+gem_package "bundle"
+
+execute "bundle" do
+  cwd "/opt/gdash"
+  command "bundle install"
+  action :nothing
+end
+
 git "/opt/gdash" do      
   repository "https://github.com/ripienaar/gdash.git"
   revision 'master'
   action :sync
+  notifies :run, "execute[bundle]", :immediately
 end
 
 execute "reload-systemd" do
@@ -13,7 +22,7 @@ template "/etc/systemd/system/gdash.service" do
   mode "0640"
   source "gdash.service.erb"
   variables({:description => "HTTP for wallboard",
-             :options => "--port 80",
+             :options => "--port 8080",
              :config_file => "/opt/gdash/config.ru"})
   notifies :run, "execute[reload-systemd]", :immediately
 end

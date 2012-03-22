@@ -1,5 +1,3 @@
-
-
 package "httpd"
 package "mod_python"
 
