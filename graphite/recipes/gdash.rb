@@ -17,7 +17,7 @@ git "/opt/gdash/demo_dashboards" do
   repository "https://github.com/nstielau/gdash_demo.git"
   revision 'master'
   action :sync
-  notifies :restart, "gdash.service", :delayed
+  notifies :restart, "service[gdash.service]", :delayed
 end
 
 execute "reload-systemd" do
