@@ -46,7 +46,7 @@ service "gdash.service" do
   provider Chef::Provider::Service::Systemd
 end
 
-template "/etc/httpd/conf.d/graphite.conf" do
+template "/etc/httpd/conf.d/gdash.conf" do
   source "gdash-vhost.conf.erb"
   notifies :restart, "service[httpd.service]", :delayed
 end
