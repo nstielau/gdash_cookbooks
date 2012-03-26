@@ -1,0 +1,13 @@
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+  ServerName gdash.nickstielau.com
+  DocumentRoot "/opt/gdash/public"
+  ErrorLog /opt/gdash/apache_error.log
+  CustomLog /opt/gdash/apache_access.log common
+
+  <Location "/">
+    ProxyPass http://127.0.0.1:8080
+    ProxyPassReverse http://127.0.0.1:8080
+  </Location>
+</VirtualHost>

@@ -45,3 +45,8 @@ service "gdash.service" do
   supports :status => true, :restart => true
   provider Chef::Provider::Service::Systemd
 end
+
+template "/etc/httpd/conf.d/graphite.conf" do
+  source "gdash-vhost.conf.erb"
+  notifies :restart, "service[httpd.service]", :delayed
+end
