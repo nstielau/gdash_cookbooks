@@ -50,6 +50,11 @@ metrics = {
      :c => rand,
      :d => rand
    },
+   :time => {
+     :seconds => Time.now.sec,
+     :minutes => Time.now.min,
+     :hours => Time.now.hour
+   },
    :io => {
      :received => result[8],
      :sent => result[9]
